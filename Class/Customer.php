@@ -25,7 +25,8 @@ class Customer {
 
     public function getProfile()
     {
-        return $this->formatProfile($this->name, $this->mail);// 大橋省吾(sohashi@kairosmarketing.net)
+        // $name : "大橋省吾", $mail : "sohashi@kairosmarketing.net"
+        return $this->formatProfile($this->name, $this->mail); // 大橋省吾(sohashi@kairosmarketing.net)
     }
 
     private function formatProfile(string $name, int $mail)

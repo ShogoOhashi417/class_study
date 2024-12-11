@@ -7,21 +7,7 @@
 
 function manuallyRegistUserUseCase()
 {
-    // 手動で何かしらの処理
-    registBasicInfo();
-    sendMail();
-}
-
-function csvRegistUserUseCase()
-{
-    // csvで何かしらの処理
-    registBasicInfo();
-    sendMail();
-}
-
-function apiRegistUseUseCase()
-{
-    // apiで何かしらの処理
+    // テスト実行で毎回処理される
     registBasicInfo();
     sendMail();
 }
@@ -34,4 +20,17 @@ function registBasicInfo()
 function sendMail()
 {
     // 登録メールを送信する処理
+}
+
+
+function csvRegistUserUseCase()
+{
+    registBasicInfo();
+    sendMail();
+}
+
+function apiRegistUseUseCase()
+{
+    registBasicInfo();
+    sendMail();
 }

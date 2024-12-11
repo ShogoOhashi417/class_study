@@ -17,8 +17,13 @@ echo getProfile("大橋省吾", "sohashi@kairosmarketing.net"); // 大橋省吾(
 // 関数だとprivateにできないので、意図しないケースで呼び出される恐れがある
 echo formatProfile("大橋省吾", "28歳"); // // 大橋省吾(28歳)
 
+// クラスの場合、privateメソッドなので外部から呼び出しができない
+echo $customer->formatProfile("大橋省吾", "28歳");
 
-// プロフィールの表記を [名前]（mail:[メールアドレス]）に変更になったとする
+
+
+// ある日の出来事...
+// プロフィールの表記を [名前]（mail:[メールアドレス]）に変更になったとする(例.大橋省吾(mail:sohashi@kairosmarketing.net))
 
 // クラスの場合
 echo $customer->getProfile(); // 大橋省吾(mail:sohashi@kairosmarketing.net)
@@ -34,6 +39,9 @@ echo formatProfile("大橋省吾", "28歳"); // // 大橋省吾(mail:28歳)
 
 // formatProfileがgetProfile()以外で使われている可能性があるので、影響範囲が読めない
 // 意図しない使われ方をしていると、↑のバグが発生する
+// 外部から呼び出せるということは、修正箇所が無限に出てくる可能性がある
+
+
 
 
 // -------------③状態管理--------------
@@ -44,15 +52,16 @@ $customer = new Customer('大橋省吾', "sohashi@kairosmarketing.net");
 echo $customer->getName(); // 大橋省吾
 
 // setterがない限り、一度生成した$customerの名前は不変
-// どこで$customer->getName()を呼び出しても、大橋省吾が出力されることが保証されている
+// どこで$customer->getName()を呼び出しても、"大橋省吾"が出力されることが保証されている
 
 
 // 関数で管理する場合
 $customer = customer('大橋省吾', "sohashi@kairosmarketing.net");
 
-echo $customer['name']; // 小橋省吾
+echo $customer['name']; // 大橋省吾
 
-$customer['name'] = '小橋省吾'; // 名前を変えることができてしまう
+// 名前を変えることができてしまう
+$customer['name'] = '小橋省吾';
 
 echo $customer['name']; // 小橋省吾
 

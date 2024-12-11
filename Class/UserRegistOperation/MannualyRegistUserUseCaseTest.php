@@ -22,6 +22,7 @@ final class MannualyRegistUserUseCaseTest extends TestCase
         );
     }
 
+    // MannualyRegistUserUseCaseではregistBasicInfo()とsendMail()が1回ずつ呼ばれることを確認すればテストOK
     public function testHandleCallsRegistBasicInfoAndSendMail(): void
     {
         // registBasicInfoが1回だけ呼ばれることを確認
@@ -34,6 +35,8 @@ final class MannualyRegistUserUseCaseTest extends TestCase
             ->expects($this->once())
             ->method('sendMail');
 
+        // 実行
+        // BasicInfoRegisterとMailSenderはMockを渡しているので、実際の処理は行われない
         $this->useCase->handle();
     }
 }
